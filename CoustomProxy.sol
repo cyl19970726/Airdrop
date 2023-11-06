@@ -86,7 +86,16 @@ contract CustomProxy is Proxy {
      *
      * - If `data` is empty, `msg.value` must be zero.
      */
+
+    // 修改这个constant变量以获得不同的bytecode
+    string constant public diff= "aaaa";
+
+
     address public logicAddr; 
+
+    // addresee 填ERC721的地址
+    // name 填ERC721 token的名字
+    // symol 填ERC721 token的符号
     constructor(address implementation,string memory name, string memory symbol) {
         logicAddr = implementation;
         (bool success,) = implementation.delegatecall(abi.encodeWithSelector(0x4cd88b76, name,symbol));
